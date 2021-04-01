@@ -11,10 +11,9 @@ public class Bridge {
 		if(response == true) return registerOk;
 		else if(response == false) return registerExists;
 		else return registerProblem;
-		
 	}
 	
-	// Se registrar, retorna true em response, se não false. Se esses opções não funcionarem, resta null.
+	// Se registrar, retorna true em response, se não false. Se essas opções não funcionarem, resta null.
 	public static Boolean registerUser(String path, String transferData) {
 		Boolean response = null;
 		try {
@@ -29,8 +28,7 @@ public class Bridge {
 	// Se existir usuário response retorna true, se não existir retorna false, se nenhum dos dois, retorna null.
 	public static Boolean checkIfUserExists(String path, String transferData) {
 			Boolean response = null;
-			
-			// response pode receber true ou false.
+			// response pode receber true ou false pela call da função.
 			try {
 				response = Register.check(path, transferData);
 			}
@@ -38,7 +36,6 @@ public class Bridge {
 				System.out.println("Impossível acessar o arquivo.");
 				e1.printStackTrace();
 			} 
-		return response;
-		
+		return response;		
 	}
 }
