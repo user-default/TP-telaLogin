@@ -2,11 +2,25 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Register{
+	
+		public static String createFile() throws IOException{
+			File path = new File("/tmp/file.txt");
+			String pathString;
+			if(!path.exists()){
+				if(!path.getParentFile().exists()) {
+					path.getParentFile().mkdirs();
+				}
+				path.createNewFile();
+			}
+			pathString = path.toString();
+			return pathString;	
+		}
 
 		public static Boolean check(String path, String transferData) throws IOException{
 

@@ -1,5 +1,6 @@
 package application;
 
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,7 +28,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage stage) throws Exception{
 		
-		String path = "/tmp/file.txt";
+		String path = Register.createFile();
 		stage.setTitle("Tela de cadastro");
 		stage.show();
 		GridPane grid = new GridPane();
@@ -81,14 +82,16 @@ public class Main extends Application{
 			
 			@Override
 			public void handle(ActionEvent e){
+				/**  Deverá ser implementado junto com um modelo de sessão ativa.
+				Boolean userLogged = false; // Armazena informação que indica se o usuário já está logado. */
 				String transferData = userTextField.getText() + " " + pwdBox.getText();
 				Boolean userNotExist = Bridge.checkIfUserExists(path, transferData);
-				System.out.println(userNotExist);
+				
 				if(userNotExist == false){
-					//System.out.println("What's happened?");
 					actiontarget.setFill(Color.BLACK);
 					actiontarget.setText("Login realizado com sucesso!");	
 				}
+
 				else{
 					actiontarget.setFill(Color.FIREBRICK);
 					actiontarget.setText("Você não está cadastrado no sistema!");
